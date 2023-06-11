@@ -1,9 +1,45 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import useMediaQuery from "../../../hooks/useMediaQuery";
 
-function LinkItem({ name, path }: { path: string; name: string }) {
+type Props = {
+  path: string;
+  name: string;
+  url?: string;
+  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function LinkItem({ name, path, url, setMenuIsOpen }: Props) {
+  const { pathname } = useLocation();
+  const md = useMediaQuery("(min-width: 768px)");
   return (
-    <li className="mx-5">
-      <Link to={path}>{name}</Link>
+    <li className="group">
+      {md ? (
+        <Link
+          className="uppercase font-bold hover:text-primary duration-200"
+          to={path}
+        >
+          {name}
+        </Link>
+      ) : (
+        <Link
+          className="m-auto text-center rounded-xl grid text-dark place-content-center w-[70%] bg-gray-100 my-16 p-2"
+          onClick={() => setMenuIsOpen(false)}
+          to={path}
+        >
+          <img
+            className="w-40 rounded-full -mt-16"
+            src={url}
+            alt="A pair of headphones"
+          />
+          <p className="uppercase font-bold">{name}</p>
+          <p className="flex items-center justify-center">
+            <span className="uppercase">shop</span>
+            <span className="text-primary text-2xl ml-2 inline-block rotate-90 group-hover:translate-x-1 duration-200">
+              ^
+            </span>
+          </p>
+        </Link>
+      )}
     </li>
   );
 }
