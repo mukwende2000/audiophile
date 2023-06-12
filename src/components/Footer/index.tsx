@@ -1,8 +1,13 @@
+import logo from "../../assets/shared/desktop/logo.svg";
 function index() {
   return (
-    <div>
-      <h1>Footer component</h1>
-    </div>
+    <footer>
+      <div>
+        <div>
+          <img src={logo} alt="" />
+        </div>
+      </div>
+    </footer>
   );
 }
 export default index;

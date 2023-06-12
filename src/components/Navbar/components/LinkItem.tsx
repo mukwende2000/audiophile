@@ -6,15 +6,16 @@ type Props = {
   name: string;
   url?: string;
   alt?: string;
-  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  mobile?: boolean;
+  // setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function LinkItem({ name, path, url, alt, setMenuIsOpen }: Props) {
+function LinkItem({ name, path, url, alt, mobile }: Props) {
   const { pathname } = useLocation();
   const md = useMediaQuery("(min-width: 768px)");
   return (
     <li className="group">
-      {md ? (
+      {!mobile ? (
         <Link
           className="uppercase font-bold hover:text-primary duration-200"
           to={path}
@@ -31,7 +32,10 @@ function LinkItem({ name, path, url, alt, setMenuIsOpen }: Props) {
           <p className="uppercase font-bold">{name}</p>
           <p className="flex items-center justify-center">
             <span className="uppercase">shop</span>
-            <span className="text-primary text-2xl ml-2 inline-block rotate-90 group-hover:translate-x-1 duration-200">
+            <span
+              role="presentation"
+              className="text-primary text-2xl ml-2 inline-block rotate-90 group-hover:translate-x-1 duration-200"
+            >
               ^
             </span>
           </p>

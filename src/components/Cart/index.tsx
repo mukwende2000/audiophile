@@ -1,7 +1,7 @@
 function index() {
   return (
     <div
-      className={`hidden absolute top-36 md:left-[73%] left-[50%] translate-x-[-50%] z-10 w-10/12 max-w-[30rem] p-7 rounded-lg bg-black/20`}
+      className={`absolute top-36 md:left-[73%] left-[50%] translate-x-[-50%] z-10 w-10/12 max-w-[30rem] p-7 rounded-lg bg-black/20`}
     >
       <div className="flex justify-between">
         <h1 className="uppercase font-bold text-xl">cart()</h1>
