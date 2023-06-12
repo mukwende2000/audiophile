@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
 type Props = {
@@ -7,21 +7,21 @@ type Props = {
   url?: string;
   alt?: string;
   mobile?: boolean;
-  // setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function LinkItem({ name, path, url, alt, mobile }: Props) {
+function LinkItem({ name, path, url, alt, mobile, setMenuIsOpen }: Props) {
   const { pathname } = useLocation();
   const md = useMediaQuery("(min-width: 768px)");
   return (
-    <li className="group">
+    <li className={`group ${!mobile ? "my-4 md:my-0 " : null}`}>
       {!mobile ? (
-        <Link
+        <NavLink
           className="uppercase font-bold hover:text-primary duration-200"
           to={path}
         >
           {name}
-        </Link>
+        </NavLink>
       ) : (
         <Link
           className="m-auto text-center rounded-xl grid text-dark place-content-center w-[70%] bg-gray/10 my-20 py-5"

@@ -11,10 +11,10 @@ import logo from "../../assets/shared/desktop/logo.svg";
 
 function index() {
   const { pathname } = useLocation();
-  const [menuIsOpen, setMenuIsOpen] = useState(true);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   return (
-    <header className="bg-black text-white">
+    <header className="bg-black/90 text-white">
       <div className="container">
         <div className="py-10 flex justify-between items-center border-b">
           <button className="cursor-pointer text-xl md:hidden">

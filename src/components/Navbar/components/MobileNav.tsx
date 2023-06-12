@@ -3,7 +3,7 @@ import earphone from "../../../assets/shared/desktop/image-category-thumbnail-ea
 import headphones from "../../../assets/shared/desktop/image-category-thumbnail-headphones.png";
 import LinkItem from "./LinkItem";
 
-function MobileNav({ menuIsOpen }) {
+function MobileNav({ menuIsOpen, setMenuIsOpen }) {
   return (
     <ul
       className={`overflow-hidden top-16 py-15 absolute ${
@@ -11,6 +11,7 @@ function MobileNav({ menuIsOpen }) {
       } right-1 left-1 bg-secondary duration-500`}
     >
       <LinkItem
+        setMenuIsOpen={setMenuIsOpen}
         alt="A pair of headphones"
         path="headphones"
         name="Headphones"
@@ -18,6 +19,7 @@ function MobileNav({ menuIsOpen }) {
         mobile
       />
       <LinkItem
+        setMenuIsOpen={setMenuIsOpen}
         alt="Audio speakers"
         path="speakers"
         name="Speakers"
@@ -25,6 +27,7 @@ function MobileNav({ menuIsOpen }) {
         mobile
       />
       <LinkItem
+        setMenuIsOpen={setMenuIsOpen}
         alt="Earphones"
         path="earphones"
         name="Earphones"

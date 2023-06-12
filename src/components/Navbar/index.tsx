@@ -15,7 +15,11 @@ function index({ menuIsOpen, setMenuIsOpen }) {
 
   return (
     <nav className={`md:static absolute left-0 right-0 top-12`}>
-      {!md ? <MobileNav menuIsOpen={menuIsOpen} /> : <MainNav />}
+      {!md ? (
+        <MobileNav menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
+      ) : (
+        <MainNav />
+      )}
     </nav>
   );
 }
