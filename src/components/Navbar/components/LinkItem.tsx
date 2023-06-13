@@ -11,25 +11,21 @@ type Props = {
 };
 
 function LinkItem({ name, path, url, alt, mobile, setMenuIsOpen }: Props) {
-  const { pathname } = useLocation();
   const md = useMediaQuery("(min-width: 768px)");
   return (
-    <li className={`group ${!mobile ? "my-4 md:my-0 " : null}`}>
-      {!mobile ? (
-        <NavLink
-          className="uppercase font-bold hover:text-primary duration-200"
-          to={path}
-        >
-          {name}
-        </NavLink>
-      ) : (
+    <li
+      className={`list-none basis-full group ${
+        !mobile ? "my-4 md:my-0 " : null
+      }`}
+    >
+      {mobile ? (
         <Link
-          className="m-auto text-center rounded-xl grid text-dark place-content-center w-[70%] bg-gray/10 my-20 py-5"
+          className="m-auto text-center rounded-xl grid text-dark place-content-center lg:w-[90%] bg-gray/10 my-32 pb-5"
           onClick={() => setMenuIsOpen(false)}
           to={path}
         >
-          <img className="w-40 rounded-full -mt-16" src={url} alt={alt} />
-          <p className="uppercase font-bold">{name}</p>
+          <img className="w-48 -mt-16" src={url} alt={alt} />
+          <p className="uppercase -mt-5 font-bold">{name}</p>
           <p className="flex items-center justify-center">
             <span className="uppercase">shop</span>
             <span
@@ -40,6 +36,13 @@ function LinkItem({ name, path, url, alt, mobile, setMenuIsOpen }: Props) {
             </span>
           </p>
         </Link>
+      ) : (
+        <NavLink
+          className="uppercase font-bold hover:text-primary duration-200"
+          to={path}
+        >
+          {name}
+        </NavLink>
       )}
     </li>
   );

@@ -5,8 +5,8 @@ import illustrationDesktop from "../../assets/shared/desktop/image-best-gear-des
 function About() {
   return (
     <section>
-      <div className="container my-10 grid lg:grid-cols-2 gap-10 place-items-center">
-        <picture>
+      <div className="container my-10 lg:flex flex-row-reverse gap-60 ">
+        <picture className="basis-full">
           <source
             media="(min-width: 768px) and (max-width: 1020px)"
             srcSet={illustrationTablet}
@@ -18,8 +18,8 @@ function About() {
             alt="Illustration, a man listening to music on headphones"
           />
         </picture>
-        <article className="lg:text-right text-center lg:w-8/12 lg:ml-aut">
-          <h2 className="uppercase text-4xl  my-10">
+        <article className="lg:text-left text-center lg:w-8/12 lg:ml-auto">
+          <h2 className="uppercase text-3xl my-10">
             bringing you the <span className="text-primary">best</span> audio
             gear
           </h2>

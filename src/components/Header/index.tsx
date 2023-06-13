@@ -16,7 +16,7 @@ function index() {
   return (
     <header className="bg-black/90 text-white">
       <div className="container">
-        <div className="py-10 flex justify-between items-center border-b">
+        <div className="py-5 flex justify-between items-center border-b border-gray">
           <button className="cursor-pointer text-xl md:hidden">
             <FaBars onClick={() => setMenuIsOpen((prev) => !prev)} />
           </button>
@@ -34,12 +34,10 @@ function index() {
             </button>
           </div>
         </div>
-        {pathname != "/" ? (
+        {pathname != "/" && (
           <h1 className="text-center text-3xl font-manrope font-800 py-8">
             {pathname.slice(1).toUpperCase()}
           </h1>
-        ) : (
-          <h1>Homepage</h1>
         )}
       </div>
     </header>
