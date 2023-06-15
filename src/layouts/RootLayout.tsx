@@ -9,6 +9,7 @@ import headphones from "../assets/shared/desktop/image-category-thumbnail-headph
 
 function RootLayout() {
   const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <div>
       <Header />
@@ -17,7 +18,7 @@ function RootLayout() {
       <main>
         <Outlet />
       </main>
-      {pathname !== "/" && (
+      {pathname === "/" ? null : pathname !== "checkout" ? null : (
         <nav>
           <div className="md:flex gap-10 justify-center container">
             <LinkItem
@@ -31,7 +32,7 @@ function RootLayout() {
           </div>
         </nav>
       )}
-      <About />
+      {pathname === "checkout" ? null : <About />}
       <Footer />
     </div>
   );

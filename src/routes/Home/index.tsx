@@ -4,8 +4,10 @@ import HomeProducts from "./components/HomeProducts";
 import speaker from "../../assets/shared/desktop/image-category-thumbnail-speakers.png";
 import earphone from "../../assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "../../assets/shared/desktop/image-category-thumbnail-headphones.png";
+import { useState } from "react";
 
 function index() {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>
       <section
@@ -34,13 +36,26 @@ function index() {
       <nav>
         <div className="md:flex gap-10 justify-center container">
           <LinkItem
+            setMenuIsOpen={setMenuIsOpen}
             mobile
             name="headphones"
             path="headphones"
             url={headphones}
           />
-          <LinkItem mobile name="speakers" path="speakers" url={speaker} />
-          <LinkItem mobile name="earphones" path="earphones" url={earphone} />
+          <LinkItem
+            mobile
+            setMenuIsOpen={setMenuIsOpen}
+            name="speakers"
+            path="speakers"
+            url={speaker}
+          />
+          <LinkItem
+            setMenuIsOpen={setMenuIsOpen}
+            mobile
+            name="earphones"
+            path="earphones"
+            url={earphone}
+          />
         </div>
       </nav>
       <HomeProducts />

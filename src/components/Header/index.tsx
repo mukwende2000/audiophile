@@ -34,7 +34,7 @@ function index() {
             </button>
           </div>
         </div>
-        {pathname != "/" && (
+        {pathname === "/" ? null : pathname !== "product:Id" ? null : (
           <h1 className="text-center text-3xl font-manrope font-800 py-8">
             {pathname.slice(1).toUpperCase()}
           </h1>

@@ -1,18 +1,20 @@
 import Button from "../Button/Button";
+import Picture from "../Picture";
 
 type Props = {
-  urlMobile: string;
-  urlDesktop: string;
-  urlTablet: string;
+  url: string;
+  desktopUrl: string;
+  tabletUrl: string;
   alt: string;
   productName: string;
   productDetails: string;
   isNew: boolean;
 };
+
 function index({
-  urlTablet,
-  urlDesktop,
-  urlMobile,
+  tabletUrl,
+  desktopUrl,
+  url,
   alt,
   productName,
   productDetails,
@@ -20,14 +22,12 @@ function index({
 }: Props) {
   return (
     <article>
-      <picture>
-        <source
-          media="(min-width: 768px and max-width: 1020px)"
-          srcSet={urlDesktop}
-        />
-        <source media="(min-width: 1020px)" srcSet={urlTablet} />
-        <img src={urlMobile} alt={alt} />
-      </picture>
+      <Picture
+        url={url}
+        desktopUrl={desktopUrl}
+        tabletUrl={tabletUrl}
+        alt={alt}
+      />
       <div>
         {isNew && <div>new product</div>}
         <h2> {productName} </h2>
