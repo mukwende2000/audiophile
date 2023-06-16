@@ -2,21 +2,20 @@ import speaker from "../../../assets/shared/desktop/image-category-thumbnail-spe
 import earphone from "../../../assets/shared/desktop/image-category-thumbnail-earphones.png";
 import headphones from "../../../assets/shared/desktop/image-category-thumbnail-headphones.png";
 import LinkItem from "./LinkItem";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store/store";
 
-type Props = {
-  menuIsOpen: boolean;
-  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
-function MobileNav({ menuIsOpen, setMenuIsOpen }: Props) {
+function MobileNav() {
+  const isActive = useSelector((state: RootState) => state.menu.isActive);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <ul
       className={`overflow-hidden top-16 py-15 absolute ${
-        menuIsOpen ? "h-[calc(100vh+100px)]" : "h-0"
+        isActive ? "h-[calc(100vh+100px)]" : "h-0"
       } right-1 left-1 bg-secondary duration-500`}
     >
       <div className="container">
         <LinkItem
-          setMenuIsOpen={setMenuIsOpen}
           alt="A pair of headphones"
           path="headphones"
           name="Headphones"
@@ -24,7 +23,6 @@ function MobileNav({ menuIsOpen, setMenuIsOpen }: Props) {
           mobile
         />
         <LinkItem
-          setMenuIsOpen={setMenuIsOpen}
           alt="Audio speakers"
           path="speakers"
           name="Speakers"
@@ -32,7 +30,6 @@ function MobileNav({ menuIsOpen, setMenuIsOpen }: Props) {
           mobile
         />
         <LinkItem
-          setMenuIsOpen={setMenuIsOpen}
           alt="Earphones"
           path="earphones"
           name="Earphones"

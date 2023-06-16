@@ -1,5 +1,8 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../store/store";
+import { closeMenu } from "../../../store/MenuSlice";
 
 type Props = {
   path: string;
@@ -7,10 +10,10 @@ type Props = {
   url?: string;
   alt?: string;
   mobile?: boolean;
-  setMenuIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function LinkItem({ name, path, url, alt, mobile, setMenuIsOpen }: Props) {
+function LinkItem({ name, path, url, alt, mobile }: Props) {
+  const dispatch = useDispatch<AppDispatch>();
   const md = useMediaQuery("(min-width: 768px)");
   return (
     <li
@@ -21,7 +24,7 @@ function LinkItem({ name, path, url, alt, mobile, setMenuIsOpen }: Props) {
       {mobile ? (
         <Link
           className="m-auto text-center rounded-xl grid text-dark place-content-center lg:w-[90%] bg-gray/10 my-32 pb-5"
-          onClick={() => setMenuIsOpen(false)}
+          onClick={() => dispatch(closeMenu())}
           to={path}
         >
           <img className="w-48 -mt-16" src={url} alt={alt} />

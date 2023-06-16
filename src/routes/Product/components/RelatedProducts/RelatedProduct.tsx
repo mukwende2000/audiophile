@@ -11,7 +11,7 @@ type Props = {
 function RelatedProduct({ productName, url, tabletUrl, desktopUrl }: Props) {
   return (
     <div className="my-5 basis-full">
-      <Picture url={url} tabletUrl={tabletUrl} desktopUrl={desktopUrl} />
+      <Picture url={url} tabletUrl={tabletUrl} alt="" desktopUrl={desktopUrl} />
       <h3 className="my-5 font-bold text-2xl">{productName}</h3>
       <Button backgroundColor="bg-primary" color="text-secondary" />
     </div>

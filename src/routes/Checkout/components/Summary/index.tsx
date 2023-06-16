@@ -1,10 +1,12 @@
 import Button from "../../../../components/Button/Button";
 import SummaryDetails from "./SummaryDetails";
 import random from "../../../../assets/cart/image-zx7-speaker.jpg";
+import OrderSummary from "../OrderSummary";
 
 function Summary() {
   return (
     <div className="basis-[33%] bg-secondary p-10 rounded">
+      <OrderSummary />
       <h2 className="text-xl uppercase">summary</h2>
       <div className="my-10 flex justify-between">
         <div className="flex items-center gap-5">

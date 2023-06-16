@@ -36,26 +36,13 @@ function index() {
       <nav>
         <div className="md:flex gap-10 justify-center container">
           <LinkItem
-            setMenuIsOpen={setMenuIsOpen}
             mobile
             name="headphones"
             path="headphones"
             url={headphones}
           />
-          <LinkItem
-            mobile
-            setMenuIsOpen={setMenuIsOpen}
-            name="speakers"
-            path="speakers"
-            url={speaker}
-          />
-          <LinkItem
-            setMenuIsOpen={setMenuIsOpen}
-            mobile
-            name="earphones"
-            path="earphones"
-            url={earphone}
-          />
+          <LinkItem mobile name="speakers" path="speakers" url={speaker} />
+          <LinkItem mobile name="earphones" path="earphones" url={earphone} />
         </div>
       </nav>
       <HomeProducts />
