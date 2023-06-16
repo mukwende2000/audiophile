@@ -8,6 +8,9 @@
 .active {
   @apply text-primary;
 }
-.rtl-grid {
-  direction: rtl;
+
+@media (min-width: 768px) {
+  .rtl-grid {
+    direction: rtl;
+  }
 }

@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import xx99 from "../../assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg";
 import Picture from "../Picture";
 import Button from "../Button/Button";
 
@@ -10,18 +9,29 @@ type Props = {
   tabletUrl: string;
   desktopUrl: string;
   alt: string;
+  name: string;
+  description: string;
+  features: string;
+  // includes:
 };
 
-function index({ even, isNew, url, desktopUrl, tabletUrl, alt }: Props) {
+function index({
+  even,
+  isNew,
+  url,
+  desktopUrl,
+  tabletUrl,
+  alt,
+  name,
+  description,
+  features,
+}: Props) {
   const { pathname } = useLocation();
   return (
     <section className="py-16">
-      <button hidden className="mb-10">
-        Go back
-      </button>
       <div
-        className={`py-5 grid-cols-2 ${
-          even ? "grid text-left rtl-grid" : "md:grid"
+        className={`py-5 md:grid grid-cols-2 ${
+          even ? "text-left rtl-grid" : null
         } gap-28`}
       >
         <Picture
@@ -41,18 +51,14 @@ function index({ even, isNew, url, desktopUrl, tabletUrl, alt }: Props) {
               even ? null : "w-6/12"
             } max-w-3xl`}
           >
-            XX99 Mark II Headphones
+            {name}
           </h1>
-          <p className="my-10 text-gray">
-            The new XX99 Mark II headphones is the pinnacle of pristine audio.
-            It redefines your premium headphones experience by reproducing the
-            balanced depth and precision of quality sound.
-          </p>
-          {pathname === "checkout" && (
+          <p className="my-10 text-gray">{description}</p>
+          {pathname === "product:Id" && (
             <p className="my-5 font-bold text-xl">$ 2,999</p>
           )}
           <div>
-            {pathname === "checkout" && (
+            {pathname === "product:Id" && (
               <div className="bg-gray/30 mr-3 inline-flex">
                 <button className="py-2 px-4 hover:text-primary">+</button>
                 <span className="p-2">1</span>

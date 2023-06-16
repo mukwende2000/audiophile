@@ -1,19 +1,28 @@
-import yx1Desktop from "../../assets/product-yx1-earphones/desktop/image-category-page-preview.jpg";
-import yx1Tablet from "../../assets/product-yx1-earphones/tablet/image-category-page-preview.jpg";
-import yx1Mobile from "../../assets/product-yx1-earphones/mobile/image-category-page-preview.jpg";
 import ProductDetails from "../../components/ProductDetails";
+import data from "../../data/data.json";
 
 function index() {
   return (
     <div className="container">
-      <ProductDetails
-        isNew
-        even
-        desktopUrl={yx1Desktop}
-        tabletUrl={yx1Tablet}
-        url={yx1Mobile}
-        alt=""
-      />
+      {data.map((item) => {
+        if (item.category === "earphones") {
+          return (
+            <ProductDetails
+              key={item.id}
+              even={item.id % 2 === 0}
+              description={item.description}
+              name={item.name}
+              isNew={item.new}
+              url={item.categoryImage.mobile}
+              tabletUrl={item.categoryImage.tablet}
+              desktopUrl={item.categoryImage.desktop}
+              alt={item.name}
+            />
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }

@@ -1,20 +1,10 @@
-import xx99 from "../../assets/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg";
-import xx99tablet from "../../assets/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg";
-import xx99desktop from "../../assets/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg";
-
-import xx992 from "../../assets/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg";
-import xx992tablet from "../../assets/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg";
-import xx992desktop from "../../assets/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg";
-
-import xx59 from "../../assets/product-xx59-headphones/mobile/image-category-page-preview.jpg";
-import xx59tablet from "../../assets/product-xx59-headphones/tablet/image-category-page-preview.jpg";
-import xx59desktop from "../../assets/product-xx59-headphones/desktop/image-category-page-preview.jpg";
+import data from "../../data/data.json";
 
 import ProductDetails from "../../components/ProductDetails";
 function index() {
   return (
     <div className="container">
-      <ProductDetails
+      {/* <ProductDetails
         url={xx99}
         tabletUrl={xx99tablet}
         desktopUrl={xx99desktop}
@@ -33,7 +23,26 @@ function index() {
         tabletUrl={xx59tablet}
         desktopUrl={xx59desktop}
         alt=""
-      />
+      /> */}
+      {data.map((item) => {
+        if (item.category === "headphones") {
+          return (
+            <ProductDetails
+              key={item.id}
+              even={item.id % 2 === 0}
+              description={item.description}
+              name={item.name}
+              isNew={item.new}
+              url={item.categoryImage.mobile}
+              tabletUrl={item.categoryImage.tablet}
+              desktopUrl={item.categoryImage.desktop}
+              alt={item.name}
+            />
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }

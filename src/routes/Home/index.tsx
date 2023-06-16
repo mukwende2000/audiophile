@@ -7,11 +7,10 @@ import headphones from "../../assets/shared/desktop/image-category-thumbnail-hea
 import { useState } from "react";
 
 function index() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
   return (
     <>
       <section
-        className={`text-center md:text-left bg-bottom bg-cover bg-no-repeat bg-[url('hero-tablet.jpg')] md:bg-[url('hero-desktop.jpg')]`}
+        className={`text-center md:text-left bg-bottom bg-cover bg-no-repeat bg-[url('/hero-tablet.jpg')] md:bg-[url('/hero-desktop.jpg')]`}
       >
         <div className="container py-32 h-screen ">
           <div
