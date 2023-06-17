@@ -1,5 +1,5 @@
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-import logo from "../../assets/shared/desktop/logo.svg";
+import logo from "/shared/desktop/logo.svg";
 import MainNav from "../Navbar/components/MainNav";
 import { Link } from "react-router-dom";
 function index() {

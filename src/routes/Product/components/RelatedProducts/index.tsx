@@ -1,6 +1,7 @@
+import { Other } from "../../../../utils/ProductType";
 import RelatedProduct from "./RelatedProduct";
 
-function index() {
+function index({ others }: { others: Other[] }) {
   return (
     <section>
       <div className="text-center py-10">
@@ -8,24 +9,17 @@ function index() {
           YOU MAY ALSO LIKE
         </h2>
         <div className="md:flex justify-between gap-10">
-          {/* <RelatedProduct
-            url={xx99tablet}
-            tabletUrl={xx99desktop}
-            desktopUrl={xx99desktop}
-            productName="XX99 MARK I"
-          />
-          <RelatedProduct
-            url={xx59tablet}
-            tabletUrl={xx59}
-            desktopUrl={xx59desktop}
-            productName="XX59"
-          />
-          <RelatedProduct
-            url={zx9tablet}
-            tabletUrl={zx9}
-            desktopUrl={zx9desktop}
-            productName="ZX9 SPEAKER"
-          /> */}
+          {others.map((other) => {
+            return (
+              <RelatedProduct
+                slug={other.slug}
+                url={other.image.mobile}
+                tabletUrl={other.image.tablet}
+                desktopUrl={other.image.desktop}
+                productName={other.name}
+              />
+            );
+          })}
         </div>
       </div>
     </section>

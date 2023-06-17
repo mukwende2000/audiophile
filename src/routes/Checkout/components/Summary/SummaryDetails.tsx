@@ -1,6 +1,6 @@
 type Props = {
   property: string;
-  value: string;
+  value: number;
 };
 
 function SummaryDetails({ property, value }: Props) {

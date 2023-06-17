@@ -1,6 +1,10 @@
 import { useLocation } from "react-router-dom";
 import Picture from "../Picture";
-import Button from "../Button/Button";
+import LinkBtn from "../LinkBtn";
+import data from "../../data/data.json";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
+import { add, calculateTotal } from "../../store/CartSlice";
 
 type Props = {
   isNew?: boolean;
@@ -10,9 +14,10 @@ type Props = {
   desktopUrl: string;
   alt: string;
   name: string;
+  price: number;
   description: string;
-  features: string;
-  // includes:
+  features?: string;
+  productId: number;
 };
 
 function index({
@@ -23,14 +28,22 @@ function index({
   tabletUrl,
   alt,
   name,
+  price,
   description,
   features,
+  productId,
 }: Props) {
   const { pathname } = useLocation();
+  const dispatch = useDispatch<AppDispatch>();
+  const cart = useSelector((state: RootState) => state.cart.cart);
+  function getProduct(id: number) {
+    const product = data.find((product) => product.id === id);
+    return product;
+  }
   return (
     <section className="py-16">
       <div
-        className={`py-5 md:grid grid-cols-2 ${
+        className={`py-5 md:grid place-items-center grid-cols-2 ${
           even ? "text-left rtl-grid" : null
         } gap-28`}
       >
@@ -54,18 +67,36 @@ function index({
             {name}
           </h1>
           <p className="my-10 text-gray">{description}</p>
-          {pathname === "product:Id" && (
-            <p className="my-5 font-bold text-xl">$ 2,999</p>
+          {pathname.includes("%") && (
+            <p className="my-5 font-bold text-xl">{`$ ${price}`}</p>
           )}
           <div>
-            {pathname === "product:Id" && (
+            {pathname.includes("%") && (
               <div className="bg-gray/30 mr-3 inline-flex">
                 <button className="py-2 px-4 hover:text-primary">+</button>
                 <span className="p-2">1</span>
                 <button className="py-2 px-4 hover:text-primary">-</button>
               </div>
             )}
-            <Button backgroundColor="bg-primary" color="text-secondary" />
+
+            <LinkBtn
+              btn={pathname.includes("%")}
+              backgroundColor="bg-primary"
+              color="text-secondary"
+              path={`${pathname}/${name}`}
+              handleClick={() => {
+                dispatch(
+                  add({
+                    item: getProduct(productId),
+                    quantity: 1,
+                    totalPrice: getProduct(productId)?.price,
+                  })
+                );
+                dispatch(calculateTotal());
+              }}
+            >
+              {pathname.includes("%") ? "add to cart" : "see product"}
+            </LinkBtn>
           </div>
         </article>
       </div>

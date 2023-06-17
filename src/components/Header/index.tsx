@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -8,7 +7,7 @@ import Cart from "../Cart";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-import logo from "../../assets/shared/desktop/logo.svg";
+import logo from "/shared/desktop/logo.svg";
 import { AppDispatch, RootState } from "../../store/store";
 import { toggle } from "../../store/CartSlice";
 import { openMenu, closeMenu } from "../../store/MenuSlice";
@@ -53,7 +52,7 @@ function index() {
             </button>
           </div>
         </div>
-        {pathname === "/" ? null : pathname === "product:Id" ? null : (
+        {pathname === "/" ? null : pathname.includes("%") ? null : (
           <h1 className="text-center text-3xl font-manrope font-800 py-8">
             {pathname.slice(1).toUpperCase()}
           </h1>

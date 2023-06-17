@@ -3,13 +3,12 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import About from "../components/About/About";
 import LinkItem from "../components/Navbar/components/LinkItem";
-import speaker from "../assets/shared/desktop/image-category-thumbnail-speakers.png";
-import earphone from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
-import headphones from "../assets/shared/desktop/image-category-thumbnail-headphones.png";
+import speaker from "/shared/desktop/image-category-thumbnail-speakers.png";
+import earphone from "/shared/desktop/image-category-thumbnail-earphones.png";
+import headphones from "/shared/desktop/image-category-thumbnail-headphones.png";
 
 function RootLayout() {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <div>
       <Header />

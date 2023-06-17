@@ -1,4 +1,4 @@
-import Button from "../Button/Button";
+import LinkBtn from "../LinkBtn";
 import Picture from "../Picture";
 
 type Props = {
@@ -32,7 +32,7 @@ function index({
         {isNew && <div>new product</div>}
         <h2> {productName} </h2>
         <p>{productDetails}</p>
-        <Button backgroundColor="bg-primary" color="text-secondary" />
+        <LinkBtn backgroundColor="bg-primary" color="text-secondary" />
       </div>
     </article>
   );

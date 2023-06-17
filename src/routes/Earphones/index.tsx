@@ -9,9 +9,11 @@ function index() {
           return (
             <ProductDetails
               key={item.id}
+              productId={item.id}
               even={item.id % 2 === 0}
               description={item.description}
               name={item.name}
+              short={item.short}
               isNew={item.new}
               url={item.categoryImage.mobile}
               tabletUrl={item.categoryImage.tablet}

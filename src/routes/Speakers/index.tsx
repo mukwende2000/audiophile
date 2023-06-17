@@ -13,10 +13,12 @@ function index() {
               description={item.description}
               name={item.name}
               isNew={item.new}
+              short={item.short}
               url={item.categoryImage.mobile}
               tabletUrl={item.categoryImage.tablet}
               desktopUrl={item.categoryImage.desktop}
               alt={item.name}
+              productId={item.id}
             />
           );
         } else {

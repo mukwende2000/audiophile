@@ -1,6 +1,6 @@
-import speaker from "../../../assets/shared/desktop/image-category-thumbnail-speakers.png";
-import earphone from "../../../assets/shared/desktop/image-category-thumbnail-earphones.png";
-import headphones from "../../../assets/shared/desktop/image-category-thumbnail-headphones.png";
+import speaker from "/shared/desktop/image-category-thumbnail-speakers.png";
+import earphone from "/shared/desktop/image-category-thumbnail-earphones.png";
+import headphones from "/shared/desktop/image-category-thumbnail-headphones.png";
 import LinkItem from "./LinkItem";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store/store";

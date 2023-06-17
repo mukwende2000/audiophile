@@ -1,32 +1,36 @@
-import Button from "../../../../components/Button/Button";
+import LinkBtn from "../../../../components/LinkBtn";
 import SummaryDetails from "./SummaryDetails";
-import random from "../../../../assets/cart/image-zx7-speaker.jpg";
 import OrderSummary from "../OrderSummary";
+import OrderedItem from "./OrderedItem";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store/store";
+import { CartItem } from "../../../../store/CartSlice";
 
 function Summary() {
+  const cart = useSelector((state: RootState) => state.cart);
   return (
     <div className="basis-[33%] bg-secondary p-10 rounded">
       <OrderSummary />
       <h2 className="text-xl uppercase">summary</h2>
-      <div className="my-10 flex justify-between">
-        <div className="flex items-center gap-5">
-          <div className="basis-[50%]">
-            <img src={random} alt="" />
-          </div>
-          <div className="basis-full">
-            <p className="font-bold uppercase">xy1</p>
-            <p>$ 599</p>
-          </div>
-        </div>
-        <p>x1</p>
+      <div>
+        {cart.cart.map((item: CartItem) => {
+          return (
+            <OrderedItem
+              url={item.item.cartImage}
+              shortName={item.item.short}
+              price={item.item.price}
+              quantity={item.quantity}
+            />
+          );
+        })}
       </div>
       <div className="mb-5">
-        <SummaryDetails property="total" value="$599" />
+        <SummaryDetails property="total" value={cart.total} />
         <SummaryDetails property="shipping" value="$ 50" />
         <SummaryDetails property="vat(included)" value="$199.8" />
         <SummaryDetails property="grand total" value="$645" />
       </div>
-      <Button
+      <LinkBtn
         width="w-full"
         backgroundColor="bg-primary"
         color="text-secondary"

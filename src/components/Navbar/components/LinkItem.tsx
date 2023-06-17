@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../store/store";

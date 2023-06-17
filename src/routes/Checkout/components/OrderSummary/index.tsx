@@ -1,5 +1,5 @@
-import random from "../../../../assets/cart/image-zx7-speaker.jpg";
-import Button from "../../../../components/Button/Button";
+import random from "/cart/image-zx7-speaker.jpg";
+import LinkBtn from "../../../../components/LinkBtn";
 
 function index() {
   return (
@@ -27,7 +27,9 @@ function index() {
           <p>$ 6,048</p>
         </div>
       </div>
-      <Button text="back to home" backgroundColor="primary" color="secondary" />
+      <LinkBtn backgroundColor="primary" color="secondary" btn>
+        back to home
+      </LinkBtn>
     </dialog>
   );
 }

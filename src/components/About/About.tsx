@@ -1,6 +1,6 @@
-import illustrationMobile from "../../assets/shared/mobile/image-best-gear-mobile.jpg";
-import illustrationTablet from "../../assets/shared/tablet/image-best-gear-tablet.jpg";
-import illustrationDesktop from "../../assets/shared/desktop/image-best-gear-desktop.jpg";
+import illustrationMobile from "/shared/mobile/image-best-gear-mobile.jpg";
+import illustrationTablet from "/shared/tablet/image-best-gear-tablet.jpg";
+import illustrationDesktop from "/shared/desktop/image-best-gear-desktop.jpg";
 import Picture from "../Picture";
 
 function About() {

@@ -1,12 +1,14 @@
-import Button from "../../components/Button/Button";
+import LinkBtn from "../../components/LinkBtn";
 import LinkItem from "../../components/Navbar/components/LinkItem";
 import HomeProducts from "./components/HomeProducts";
-import speaker from "../../assets/shared/desktop/image-category-thumbnail-speakers.png";
-import earphone from "../../assets/shared/desktop/image-category-thumbnail-earphones.png";
-import headphones from "../../assets/shared/desktop/image-category-thumbnail-headphones.png";
-import { useState } from "react";
+import speaker from "/shared/desktop/image-category-thumbnail-speakers.png";
+import earphone from "/shared/desktop/image-category-thumbnail-earphones.png";
+import headphones from "/shared/desktop/image-category-thumbnail-headphones.png";
+import data from "../../data/data.json";
 
 function index() {
+  const featuredProduct = data[3];
+
   return (
     <>
       <section
@@ -20,16 +22,19 @@ function index() {
             New Product
           </div>
           <h1 className="font-bold max-w-md uppercase my-5 text-secondary text-4xl lg:text-6xl">
-            xx99 mark II headphones
+            {featuredProduct.name}
           </h1>
           <p className="max-w-md text-gray my-10">
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Button
+          <LinkBtn
+            path={`${featuredProduct.category}/${featuredProduct.name}`}
             backgroundColor="bg-primary hover:bg-primary/90"
             color="text-secondary"
-          />
+          >
+            see product
+          </LinkBtn>
         </div>
       </section>
       <nav>
