@@ -5,37 +5,45 @@ import OrderedItem from "./OrderedItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
 import { CartItem } from "../../../../store/CartSlice";
+import { formatPrice } from "../../../../utils/formatPrice";
 
 function Summary() {
-  const cart = useSelector((state: RootState) => state.cart);
+  const cartList = useSelector((state: RootState) => state.cart.cartList);
+  const total = useSelector((state: RootState) => state.cart.total);
   return (
     <div className="basis-[33%] bg-secondary p-10 rounded">
       <OrderSummary />
       <h2 className="text-xl uppercase">summary</h2>
-      <div>
-        {cart.cart.map((item: CartItem) => {
+      <div className="max-h-80 overflow-auto">
+        {cartList.map((item: CartItem) => {
           return (
             <OrderedItem
-              url={item.item.cartImage}
-              shortName={item.item.short}
-              price={item.item.price}
+              key={item.product.id}
+              url={item.product.cartImage}
+              shortName={item.product.short}
+              price={item.product.price}
               quantity={item.quantity}
             />
           );
         })}
       </div>
       <div className="mb-5">
-        <SummaryDetails property="total" value={cart.total} />
+        <SummaryDetails property="total" value={`$ ${formatPrice(total)}`} />
         <SummaryDetails property="shipping" value="$ 50" />
         <SummaryDetails property="vat(included)" value="$199.8" />
-        <SummaryDetails property="grand total" value="$645" />
+        <SummaryDetails
+          property="grand total"
+          value={`$ ${formatPrice(total + 50)}`}
+        />
       </div>
       <LinkBtn
+        btn
         width="w-full"
         backgroundColor="bg-primary"
         color="text-secondary"
-        text="continue and pay"
-      />
+      >
+        continue and pay
+      </LinkBtn>
     </div>
   );
 }

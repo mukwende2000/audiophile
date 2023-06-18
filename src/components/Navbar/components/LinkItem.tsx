@@ -1,12 +1,12 @@
 import { NavLink, Link } from "react-router-dom";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store/store";
+import { AppDispatch } from "../../../store/store";
 import { closeMenu } from "../../../store/MenuSlice";
 
 type Props = {
   path: string;
-  name: string;
+  name?: string;
   url?: string;
   alt?: string;
   mobile?: boolean;
@@ -28,7 +28,7 @@ function LinkItem({ name, path, url, alt, mobile }: Props) {
           to={path}
         >
           <img className="w-48 -mt-16" src={url} alt={alt} />
-          <p className="uppercase -mt-5 font-bold">{name}</p>
+          <p className="uppercase -mt-5 font-bold">{path}</p>
           <p className="flex items-center justify-center">
             <span className="uppercase">shop</span>
             <span

@@ -13,12 +13,13 @@ function index({ features, accessories }: Props) {
         <h2 className="text-xl lg:text-3xl font-bold mb-2">FEATURES</h2>
         <p className="text-gray">{features}</p>
       </article>
-      <div className="md:flex lg:block justify-between basis-full">
+      <div className="md:flex lg:block justify-between basis-[40%]">
         <h2 className="font-bold text-xl md:text-3xl mb-2">IN THE BOX</h2>
-        <ul className="md:mr-60">
+        <ul className="md:mr-60 lg:mr-0">
           {accessories.map((accessory) => {
             return (
               <ProductFeature
+                key={accessory.item}
                 name={accessory.item}
                 quantity={`${accessory.quantity}x`}
               />

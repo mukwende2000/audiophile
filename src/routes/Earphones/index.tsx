@@ -1,31 +1,31 @@
+import Container from "../../components/Container";
 import ProductDetails from "../../components/ProductDetails";
 import data from "../../data/data.json";
 
 function index() {
   return (
-    <div className="container">
+    <Container>
       {data.map((item) => {
         if (item.category === "earphones") {
           return (
             <ProductDetails
-              key={item.id}
-              productId={item.id}
-              even={item.id % 2 === 0}
-              description={item.description}
-              name={item.name}
-              short={item.short}
-              isNew={item.new}
-              url={item.categoryImage.mobile}
-              tabletUrl={item.categoryImage.tablet}
-              desktopUrl={item.categoryImage.desktop}
               alt={item.name}
+              description={item.description}
+              desktopUrl={item.categoryImage.desktop}
+              even={item.id % 2 === 0}
+              isNew={item.new}
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              productId={item.id}
+              short={item.short}
+              tabletUrl={item.categoryImage.tablet}
+              url={item.categoryImage.mobile}
             />
           );
-        } else {
-          return null;
         }
       })}
-    </div>
+    </Container>
   );
 }
 

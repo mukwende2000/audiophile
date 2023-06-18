@@ -5,6 +5,7 @@ import data from "../../data/data.json";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { add, calculateTotal } from "../../store/CartSlice";
+import { toast } from "react-toastify";
 
 type Props = {
   isNew?: boolean;
@@ -18,6 +19,7 @@ type Props = {
   description: string;
   features?: string;
   productId: number;
+  short: string;
 };
 
 function index({
@@ -30,12 +32,11 @@ function index({
   name,
   price,
   description,
-  features,
   productId,
 }: Props) {
   const { pathname } = useLocation();
   const dispatch = useDispatch<AppDispatch>();
-  const cart = useSelector((state: RootState) => state.cart.cart);
+  const cart = useSelector((state: RootState) => state.cart);
   function getProduct(id: number) {
     const product = data.find((product) => product.id === id);
     return product;
@@ -87,7 +88,7 @@ function index({
               handleClick={() => {
                 dispatch(
                   add({
-                    item: getProduct(productId),
+                    product: getProduct(productId),
                     quantity: 1,
                     totalPrice: getProduct(productId)?.price,
                   })

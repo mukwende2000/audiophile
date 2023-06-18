@@ -1,21 +1,36 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Product } from "../utils/ProductType";
+import { toast } from "react-toastify";
 
 export interface CartItem {
-  item: Product;
+  product: Product;
   quantity: number;
   totalPrice: number;
 }
-
-export interface InitialState {
-  isOpen: boolean;
-  cart: CartItem[];
-  total: number;
+export interface AddCartItemPayload {
+  id: number;
+  payload: CartItem;
 }
 
-const initialState = {
+export interface UpdateCartItemPayload {
+  id: number;
+  name: any;
+  payload: {
+    id: string;
+    name: string;
+  };
+}
+export interface CartState {
+  isOpen: boolean;
+  cartList: CartItem[];
+  total: number;
+  buttonState: "on" | "off";
+}
+
+const initialState: CartState = {
   isOpen: false,
-  cart: [],
+  buttonState: "off",
+  cartList: [],
   total: 0,
 };
 
@@ -30,43 +45,58 @@ export const cartSlice = createSlice({
         state.isOpen = true;
       }
     },
-    add: (state, action: PayloadAction<object>): void => {
-      const isInCart = state.cart.some(
-        (item: CartItem) => item.item.id === action.payload.item.id
+    add: (state, action): void => {
+      const isInCart = state.cartList.some(
+        (item: CartItem) => item.product.id === action.payload.product.id
       );
       if (isInCart) {
-        state.cart;
+        state.cartList;
       } else {
-        state.cart.push(action.payload);
+        state.cartList.push(action.payload);
+        if (state.buttonState === "off") state.buttonState = "on";
+        toast.success(`${action.payload.product.name} added to cart`);
       }
     },
-    increaseQuantity: (state, action: PayloadAction<object>) => {
-      state.cart.map((item: CartItem) => {
-        if (item.item.id === action.payload.id) {
+    increaseItemQuantity: (
+      state,
+      action: PayloadAction<AddCartItemPayload>
+    ) => {
+      state.cartList.map((item: CartItem) => {
+        if (item.product.id === action.payload.id) {
           item.quantity += 1;
-          item.totalPrice = item.item.price * item.quantity;
+          item.totalPrice = item.product.price * item.quantity;
         }
       });
     },
-    decreaseQuantity: (state, action: PayloadAction<object>) => {
-      state.cart.map((item: CartItem) => {
-        if (item.item.id === action.payload.id) {
+    decreaseItemQuantity: (
+      state,
+      action: PayloadAction<UpdateCartItemPayload>
+    ) => {
+      state.cartList.map((item: CartItem) => {
+        if (state.cartList.length === 1 && item.quantity === 1)
+          state.buttonState = "off";
+
+        if (item.product.id === action.payload.id) {
           if (item.quantity === 1) {
-            state.cart.splice(state.cart.indexOf(item), 1);
+            state.cartList.splice(state.cartList.indexOf(item), 1);
+            toast.info(`${action.payload.name} removed from the cart`);
           } else {
             item.quantity -= 1;
-            item.totalPrice = item.item.price * item.quantity;
+            item.totalPrice = item.product.price * item.quantity;
           }
         }
       });
     },
     calculateTotal: (state) => {
-      state.total = state.cart.reduce((totalVal, item) => {
+      state.total = state.cartList.reduce((totalVal, item) => {
         return totalVal + item.totalPrice;
       }, 0);
     },
     clear: (state) => {
-      state.cart.length = 0;
+      state.cartList.length = 0;
+      state.isOpen = false;
+      state.buttonState = "off";
+      toast.success("Successfully cleared, your cart is empty");
     },
   },
 });
@@ -75,8 +105,8 @@ export const {
   toggle,
   clear,
   add,
-  increaseQuantity,
-  decreaseQuantity,
+  increaseItemQuantity,
+  decreaseItemQuantity,
   calculateTotal,
 } = cartSlice.actions;
 export default cartSlice.reducer;

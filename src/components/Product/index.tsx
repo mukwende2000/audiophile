@@ -32,7 +32,9 @@ function index({
         {isNew && <div>new product</div>}
         <h2> {productName} </h2>
         <p>{productDetails}</p>
-        <LinkBtn backgroundColor="bg-primary" color="text-secondary" />
+        <LinkBtn backgroundColor="bg-primary" color="text-secondary">
+          see product
+        </LinkBtn>
       </div>
     </article>
   );

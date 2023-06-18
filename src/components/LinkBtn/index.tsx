@@ -20,7 +20,6 @@ function LinkBtn({
   children,
   handleClick,
 }: Props) {
-  const { pathname } = useLocation();
   return btn ? (
     <button
       onClick={handleClick}
@@ -32,7 +31,7 @@ function LinkBtn({
     </button>
   ) : (
     <Link
-      to={path}
+      to={path!}
       className={`${backgroundColor} ${color} ${width} py-3 px-7 text-[.9rem] uppercase duration-200 ${
         backgroundColor.includes("bg-transparent") ? "border" : null
       }`}

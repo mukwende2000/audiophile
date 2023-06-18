@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
-  @apply mx-auto w-11/12 lg:w-8/12;
-}
 .active {
   @apply text-primary;
 }

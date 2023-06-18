@@ -1,46 +1,31 @@
 import data from "../../data/data.json";
 
 import ProductDetails from "../../components/ProductDetails";
+import Container from "../../components/Container";
 function index() {
   return (
-    <div className="container">
+    <Container>
       {data.map((item) => {
         if (item.category === "headphones") {
           return (
             <ProductDetails
-              key={item.id}
-              productId={item.id}
-              even={item.id % 2 === 0}
-              description={item.description}
-              name={item.name}
-              short={item.short}
-              isNew={item.new}
-              url={item.categoryImage.mobile}
-              tabletUrl={item.categoryImage.tablet}
-              desktopUrl={item.categoryImage.desktop}
               alt={item.name}
+              description={item.description}
+              desktopUrl={item.categoryImage.desktop}
+              key={item.id}
+              even={item.id % 2 === 0}
+              isNew={item.new}
+              name={item.name}
+              price={item.price}
+              productId={item.id}
+              short={item.short}
+              tabletUrl={item.categoryImage.tablet}
+              url={item.categoryImage.mobile}
             />
           );
-        } else {
-          return null;
         }
       })}
-    </div>
+    </Container>
   );
-}
-{
-  /* <ProductDetails
-              key={item.id}
-              productId={item.id}
-              even={item.id % 2 === 0}
-              description={item.description}
-              name={item.name}
-              isNew={item.new}
-              short={item.short}
-              url={item.categoryImage.mobile}
-              tabletUrl={item.categoryImage.tablet}
-              desktopUrl={item.categoryImage.desktop}
-              alt={item.name}
-            /> */
 }
 export default index;

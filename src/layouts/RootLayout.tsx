@@ -1,37 +1,32 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import About from "../components/About/About";
+import About from "../components/About";
 import LinkItem from "../components/Navbar/components/LinkItem";
 import speaker from "/shared/desktop/image-category-thumbnail-speakers.png";
 import earphone from "/shared/desktop/image-category-thumbnail-earphones.png";
-import headphones from "/shared/desktop/image-category-thumbnail-headphones.png";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import Backdrop from "../components/Backdrop/Backdrop";
+import { toggle } from "../store/CartSlice";
 
 function RootLayout() {
   const { pathname } = useLocation();
+  const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
+  function handleBackdropClick() {
+    dispatch(toggle());
+  }
+
   return (
     <div>
       <Header />
-
-      {/* {cart.open && <Backdrop onBackdropClick={handleBackdropClick} />} */}
+      {cart.isOpen && <Backdrop onBackdropClick={handleBackdropClick} />}
       <main>
         <Outlet />
       </main>
-      {pathname === "/" ? null : pathname !== "checkout" ? null : (
-        <nav>
-          <div className="md:flex gap-10 justify-center container">
-            <LinkItem
-              mobile
-              name="headphones"
-              path="headphones"
-              url={headphones}
-            />
-            <LinkItem mobile name="speakers" path="speakers" url={speaker} />
-            <LinkItem mobile name="earphones" path="earphones" url={earphone} />
-          </div>
-        </nav>
-      )}
-      {pathname === "checkout" ? null : <About />}
+      {pathname !== "/checkout" && <About />}
       <Footer />
     </div>
   );

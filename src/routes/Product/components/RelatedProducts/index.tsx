@@ -12,6 +12,7 @@ function index({ others }: { others: Other[] }) {
           {others.map((other) => {
             return (
               <RelatedProduct
+                key={other.name}
                 slug={other.slug}
                 url={other.image.mobile}
                 tabletUrl={other.image.tablet}

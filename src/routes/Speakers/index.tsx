@@ -1,9 +1,10 @@
+import Container from "../../components/Container";
 import ProductDetails from "../../components/ProductDetails";
 import data from "../../data/data.json";
 
 function index() {
   return (
-    <div className="container">
+    <Container>
       {data.map((item) => {
         if (item.category === "speakers") {
           return (
@@ -19,13 +20,12 @@ function index() {
               desktopUrl={item.categoryImage.desktop}
               alt={item.name}
               productId={item.id}
+              price={item.price}
             />
           );
-        } else {
-          return null;
         }
       })}
-    </div>
+    </Container>
   );
 }
 
