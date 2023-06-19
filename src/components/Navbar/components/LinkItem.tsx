@@ -41,7 +41,7 @@ function LinkItem({ name, path, url, alt, mobile }: Props) {
         </Link>
       ) : (
         <NavLink
-          className="uppercase font-bold hover:text-primary duration-200"
+          className="uppercase text-[.8rem] font-bold hover:text-primary duration-200"
           to={path}
         >
           {name}

@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { Dispatch, useEffect, useRef, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import OrderedItem from "../../routes/Checkout/components/Summary/OrderedItem";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { formatPrice } from "../../utils/formatPrice";
 import LinkBtn from "../LinkBtn";
-import { clear } from "../../store/CartSlice";
-import { useNavigate } from "react-router-dom";
+import { CartItem, clear } from "../../store/CartSlice";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import { AnyAction } from "@reduxjs/toolkit";
 
 function Dialog() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -14,9 +15,9 @@ function Dialog() {
   const total = useSelector((state: RootState) => state.cart.total);
   const cartList = useSelector((state: RootState) => state.cart.cartList);
   const isSubmitted = useSelector((state: RootState) => state.form.isSubmitted);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const firstItem = cartList[0];
+  const dispatch: Dispatch<AnyAction> = useDispatch();
+  const navigate: NavigateFunction = useNavigate();
+  const firstItem: CartItem = cartList[0];
 
   useEffect(() => {
     if (isSubmitted) {

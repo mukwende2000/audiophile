@@ -1,6 +1,6 @@
 function index() {
   return (
-    <article className="lg:text-left text-center lg:w-8/12 lg:ml-auto">
+    <article className="lg:text-left text-center basis-full lg:ml-auto">
       <h2 className="uppercase text-3xl my-10">
         bringing you the <span className="text-primary">best</span> audio gear
       </h2>

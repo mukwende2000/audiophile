@@ -8,7 +8,7 @@ import AboutArticle from "./components/AboutArticle";
 function index() {
   return (
     <section>
-      <Container styles="my-10 lg:flex flex-row-reverse gap-60 ">
+      <Container styles="my-10 lg:flex flex-row-reverse gap-40 ">
         <Picture
           otherStyles="basis-full"
           url={illustrationMobile}
