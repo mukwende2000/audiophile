@@ -32,9 +32,9 @@ export interface CartState {
 
 const initialState: CartState = {
   isOpen: false,
-  buttonState: "off",
+  buttonState: cartList.length > 0 ? "on" : "off",
   cartList,
-  total: 0,
+  total: cartList.length,
   checkedout: false,
 };
 
@@ -57,12 +57,12 @@ export const cartSlice = createSlice({
         state.cartList;
       } else {
         state.cartList.push(action.payload);
+        localStorage.setItem("cartList", JSON.stringify(state.cartList));
+        toast.success(`${action.payload.product.name} added to cart`, {
+          position: "top-left",
+        });
         if (state.buttonState === "off") {
           state.buttonState = "on";
-          toast.success(`${action.payload.product.name} added to cart`, {
-            position: "top-left",
-          });
-          localStorage.setItem("cartList", JSON.stringify(state.cartList));
         }
       }
     },
