@@ -2,6 +2,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Product } from "../utils/ProductType";
 import { toast } from "react-toastify";
 
+const cartList = JSON.parse(localStorage.getItem("cartList") as string) || [];
+
 export interface CartItem {
   product: Product;
   quantity: number;
@@ -31,7 +33,7 @@ export interface CartState {
 const initialState: CartState = {
   isOpen: false,
   buttonState: "off",
-  cartList: [],
+  cartList,
   total: 0,
   checkedout: false,
 };
@@ -55,10 +57,13 @@ export const cartSlice = createSlice({
         state.cartList;
       } else {
         state.cartList.push(action.payload);
-        if (state.buttonState === "off") state.buttonState = "on";
-        toast.success(`${action.payload.product.name} added to cart`, {
-          position: "top-left",
-        });
+        if (state.buttonState === "off") {
+          state.buttonState = "on";
+          toast.success(`${action.payload.product.name} added to cart`, {
+            position: "top-left",
+          });
+          localStorage.setItem("cartList", JSON.stringify(state.cartList));
+        }
       }
     },
     increaseItemQuantity: (
@@ -105,9 +110,7 @@ export const cartSlice = createSlice({
       toast.success("Successfully cleared, your cart is empty", {
         position: "top-left",
       });
-    },
-    checkout: (state) => {
-      state.checkedout = true;
+      localStorage.setItem("cartList", JSON.stringify(state.cartList));
     },
   },
 });

@@ -24,8 +24,9 @@ function Dialog() {
     if (isSubmitted) {
       dialogRef.current?.showModal();
     } else {
-      return () => dialogRef.current?.close();
+      dialogRef.current?.close();
     }
+    return () => dialogRef.current?.close();
   }, [isSubmitted]);
 
   return (
@@ -86,7 +87,7 @@ function Dialog() {
         btn
         handleClick={() => {
           dispatch(clear());
-          setIsSubmitted();
+          dispatch(setIsSubmitted(false));
           navigate("/");
         }}
         backgroundColor="bg-primary"

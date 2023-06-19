@@ -13,11 +13,11 @@ function Checkout() {
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    dispatch(setIsSubmitting());
+    dispatch(setIsSubmitting(true));
 
     setTimeout(() => {
-      dispatch(setIsSubmitting());
-      dispatch(setIsSubmitted());
+      dispatch(setIsSubmitting(false));
+      dispatch(setIsSubmitted(true));
     }, 2000);
   }
 

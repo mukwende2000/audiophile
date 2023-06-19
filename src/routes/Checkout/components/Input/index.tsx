@@ -5,12 +5,10 @@ type Props = {
   id: string;
   position?: string;
   required?: boolean;
-  pattern?: string;
 };
 
 function Input({
   required = true,
-  pattern,
   name,
   type,
   placeholder,
@@ -27,7 +25,6 @@ function Input({
         type={type}
         placeholder={placeholder}
         id={id}
-        pattern={pattern}
         required={required}
       />
     </div>

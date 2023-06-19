@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type FormState = {
   isSubmitting: boolean;
@@ -14,11 +14,11 @@ export const FormSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
-    setIsSubmitting: (state) => {
-      state.isSubmitting = !state.isSubmitting;
+    setIsSubmitting: (state, action) => {
+      state.isSubmitting = action.payload;
     },
-    setIsSubmitted: (state) => {
-      state.isSubmitted = !state.isSubmitted;
+    setIsSubmitted: (state, action) => {
+      state.isSubmitted = action.payload;
     },
   },
 });
