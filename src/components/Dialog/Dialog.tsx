@@ -8,6 +8,7 @@ import LinkBtn from "../LinkBtn";
 import { CartItem, clear } from "../../store/CartSlice";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { AnyAction } from "@reduxjs/toolkit";
+import { setIsSubmitted } from "../../store/FormSlice";
 
 function Dialog() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -30,13 +31,13 @@ function Dialog() {
   return (
     <dialog ref={dialogRef} className="rounded-lg px-10">
       <FaCheck className="bg-primary rounded-full w-16 h-16 my-5 text-secondary" />
-      <h3 className="text-4xl w-7/12 font-[500] uppercase">
+      <h3 className="text-center md:text-left text-4xl md:w-7/12 w-full font-[500] uppercase">
         Thank you for your order
       </h3>
-      <p className="text-gray my-5">
+      <p className="text-center md:text-left text-gray my-5">
         You will recieve an email confiramtion shortly.
       </p>
-      <div className="my-5 flex rounded-lg overflow-hidden">
+      <div className="my-5 md:flex rounded-lg overflow-hidden">
         <div className="bg-gray/20 p-7">
           {!viewingAll ? (
             <div>
@@ -75,9 +76,9 @@ function Dialog() {
             </button>
           )}
         </div>
-        <div className="px-10 ml-1 bg-dark text-secondary grid place-content-center">
+        <div className="text-center px-10 ml-1 bg-dark text-secondary grid place-content-center">
           <p className=" uppercase text-gray">grand total</p>
-          <p className="font-bold text-2xl ">$ {formatPrice(total + 50)}</p>
+          <p className="font-bold md:text-2xl ">$ {formatPrice(total + 50)}</p>
         </div>
       </div>
       <LinkBtn
@@ -85,6 +86,7 @@ function Dialog() {
         btn
         handleClick={() => {
           dispatch(clear());
+          setIsSubmitted();
           navigate("/");
         }}
         backgroundColor="bg-primary"

@@ -30,7 +30,6 @@ function Input({
         pattern={pattern}
         required={required}
       />
-      {/* <p>{errors.name?.message}</p> */}
     </div>
   );
 }

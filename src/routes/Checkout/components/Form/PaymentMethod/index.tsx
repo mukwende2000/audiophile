@@ -36,7 +36,7 @@ function index() {
           </>
         ) : (
           <div className="flex gap-5 col-start-1 col-end-3">
-            <FaRegHandshake className="basis-[20%] text-primary text-5xl" />
+            <FaRegHandshake className="basis-[20%] text-primary hidden md:block text-5xl" />
             <p className="text-gray basis-full">
               The 'Cash on Delivery' option enables you to pay in cash When our
               delivery counter arrives at your residence. Just make sure your

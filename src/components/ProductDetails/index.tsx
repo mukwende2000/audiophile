@@ -61,13 +61,13 @@ function index({
             </div>
           )}
           <h1
-            className={`my-6 text-3xl md:text-4xl font-bold ${
-              even ? null : "w-6/12"
+            className={`my-5 text-3xl md:text-4xl font-bold ${
+              even ? null : "w-7/12"
             } max-w-3xl`}
           >
             {name}
           </h1>
-          <p className="my-10 text-gray">{description}</p>
+          <p className="my-5 text-gray">{description}</p>
           {pathname.includes("%") && (
             <p className="my-5 font-bold text-xl">{`$ ${price}`}</p>
           )}

@@ -56,7 +56,9 @@ export const cartSlice = createSlice({
       } else {
         state.cartList.push(action.payload);
         if (state.buttonState === "off") state.buttonState = "on";
-        toast.success(`${action.payload.product.name} added to cart`);
+        toast.success(`${action.payload.product.name} added to cart`, {
+          position: "top-left",
+        });
       }
     },
     increaseItemQuantity: (
@@ -81,7 +83,9 @@ export const cartSlice = createSlice({
         if (item.product.id === action.payload.id) {
           if (item.quantity === 1) {
             state.cartList.splice(state.cartList.indexOf(item), 1);
-            toast.info(`${action.payload.name} removed from the cart`);
+            toast.info(`${action.payload.name} removed from the cart`, {
+              position: "top-left",
+            });
           } else {
             item.quantity -= 1;
             item.totalPrice = item.product.price * item.quantity;
@@ -98,7 +102,9 @@ export const cartSlice = createSlice({
       state.cartList.length = 0;
       state.isOpen = false;
       state.buttonState = "off";
-      toast.success("Successfully cleared, your cart is empty");
+      toast.success("Successfully cleared, your cart is empty", {
+        position: "top-left",
+      });
     },
     checkout: (state) => {
       state.checkedout = true;
