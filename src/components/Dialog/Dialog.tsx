@@ -9,7 +9,7 @@ import { clear } from "../../store/CartSlice";
 import { useNavigate } from "react-router-dom";
 
 function Dialog() {
-  const dialogRef = useRef(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
   const [viewingAll, setViewingAll] = useState(false);
   const total = useSelector((state: RootState) => state.cart.total);
   const cartList = useSelector((state: RootState) => state.cart.cartList);
@@ -20,9 +20,9 @@ function Dialog() {
 
   useEffect(() => {
     if (isSubmitted) {
-      dialogRef.current.showModal();
+      dialogRef.current?.showModal();
     } else {
-      return () => dialogRef.current.close();
+      return () => dialogRef.current?.close();
     }
   }, [isSubmitted]);
 
