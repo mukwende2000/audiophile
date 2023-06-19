@@ -13,9 +13,11 @@ function index() {
     <div>
       {isOpen && <Cart />}
       <button onClick={() => dispatch(toggle())} className="relative">
-        <span className="bg-primary p-1 rounded-full w-6 h-6 flex justify-center items-center text-secondary absolute -bottom-2 left-5">
-          {cartList.length}
-        </span>
+        {cartList.length > 0 && (
+          <span className="bg-primary p-1 rounded-full w-6 h-6 flex justify-center items-center text-secondary absolute -bottom-2 left-5">
+            {cartList.length}
+          </span>
+        )}
         <AiOutlineShoppingCart className="text-3xl hover:text-primary cursor-pointer duration-200" />
       </button>
     </div>

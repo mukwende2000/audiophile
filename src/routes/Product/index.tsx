@@ -43,11 +43,7 @@ function index() {
   );
 }
 
-export function loader({
-  params,
-}: {
-  params: { productId: string };
-}): Product | undefined {
+export async function loader({ params }: { params: any }) {
   const product = data.find((item) => item.name === params.productId);
 
   return product;

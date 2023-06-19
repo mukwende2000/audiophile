@@ -3,34 +3,24 @@ import LinkBtn from "../../../../components/LinkBtn";
 
 function index() {
   return (
-    <dialog>
-      <div>
-        <img src="" alt="" />
-      </div>
-      <h3>thank you for your order</h3>
-      <p>You will recieve an email confiramtion shortly.</p>
-      <div>
-        <div className="my-10 flex justify-between">
-          <div className="flex items-center gap-5">
-            <div className="basis-[50%]">
-              <img src={random} alt="" />
-            </div>
-            <div className="basis-full">
-              <p className="font-bold uppercase">xy1</p>
-              <p>$ 599</p>
-            </div>
+    <div>
+      <div className="my-10 flex justify-between">
+        <div className="flex items-center gap-5">
+          <div className="basis-[50%]">
+            <img src={random} alt="" />
           </div>
-          <p>x1</p>
+          <div className="basis-full">
+            <p className="font-bold uppercase">xy1</p>
+            <p>$ 599</p>
+          </div>
         </div>
-        <div>
-          <p>grand total</p>
-          <p>$ 6,048</p>
-        </div>
+        <p>x1</p>
       </div>
-      <LinkBtn backgroundColor="primary" color="secondary" btn>
-        back to home
-      </LinkBtn>
-    </dialog>
+      <div>
+        <p>grand total</p>
+        <p>$ 6,048</p>
+      </div>
+    </div>
   );
 }
 

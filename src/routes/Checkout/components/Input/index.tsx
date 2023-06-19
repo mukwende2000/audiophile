@@ -4,9 +4,19 @@ type Props = {
   placeholder: string;
   id: string;
   position?: string;
+  required?: boolean;
+  pattern?: string;
 };
 
-function Input({ name, type, placeholder, id, position }: Props) {
+function Input({
+  required = true,
+  pattern,
+  name,
+  type,
+  placeholder,
+  id,
+  position,
+}: Props) {
   return (
     <div className={`${position} mb-6 lg:mb-0 flex flex-col`}>
       <label className="font-bold text-sm mb-2" htmlFor={name}>
@@ -17,7 +27,10 @@ function Input({ name, type, placeholder, id, position }: Props) {
         type={type}
         placeholder={placeholder}
         id={id}
+        pattern={pattern}
+        required={required}
       />
+      {/* <p>{errors.name?.message}</p> */}
     </div>
   );
 }

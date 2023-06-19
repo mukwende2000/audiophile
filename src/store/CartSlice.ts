@@ -25,6 +25,7 @@ export interface CartState {
   cartList: CartItem[];
   total: number;
   buttonState: "on" | "off";
+  checkedout: boolean;
 }
 
 const initialState: CartState = {
@@ -32,6 +33,7 @@ const initialState: CartState = {
   buttonState: "off",
   cartList: [],
   total: 0,
+  checkedout: false,
 };
 
 export const cartSlice = createSlice({
@@ -97,6 +99,9 @@ export const cartSlice = createSlice({
       state.isOpen = false;
       state.buttonState = "off";
       toast.success("Successfully cleared, your cart is empty");
+    },
+    checkout: (state) => {
+      state.checkedout = true;
     },
   },
 });

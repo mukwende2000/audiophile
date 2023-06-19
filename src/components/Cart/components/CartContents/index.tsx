@@ -14,12 +14,12 @@ function index() {
   const cartList = useSelector((state: RootState) => state.cart.cartList);
   const dispatch = useDispatch();
 
-  function handleDecreaseQuantity(item: UpdateCartItemPayload) {
+  function handleDecreaseQuantity(item: any) {
     dispatch(decreaseItemQuantity(item));
     dispatch(calculateTotal());
   }
 
-  function handleIncreaseQuantity(item: AddCartItemPayload) {
+  function handleIncreaseQuantity(item: any) {
     dispatch(increaseItemQuantity(item));
     dispatch(calculateTotal());
   }

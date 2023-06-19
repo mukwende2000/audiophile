@@ -1,6 +1,5 @@
 import LinkBtn from "../../../../components/LinkBtn";
 import SummaryDetails from "./SummaryDetails";
-import OrderSummary from "../OrderSummary";
 import OrderedItem from "./OrderedItem";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store/store";
@@ -10,9 +9,11 @@ import { formatPrice } from "../../../../utils/formatPrice";
 function Summary() {
   const cartList = useSelector((state: RootState) => state.cart.cartList);
   const total = useSelector((state: RootState) => state.cart.total);
+  const isSubmitting = useSelector(
+    (state: RootState) => state.form.isSubmitting
+  );
   return (
     <div className="basis-[33%] bg-secondary p-10 rounded">
-      <OrderSummary />
       <h2 className="text-xl uppercase">summary</h2>
       <div className="max-h-80 overflow-auto">
         {cartList.map((item: CartItem) => {
@@ -42,7 +43,7 @@ function Summary() {
         backgroundColor="bg-primary"
         color="text-secondary"
       >
-        continue and pay
+        {isSubmitting ? "submitting..." : "continue and pay"}
       </LinkBtn>
     </div>
   );

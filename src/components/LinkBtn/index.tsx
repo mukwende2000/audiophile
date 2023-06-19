@@ -7,6 +7,7 @@ type Props = {
   children: ReactNode;
   width?: string;
   path?: string;
+  type?: "button" | "submit" | "reset" | undefined;
   btn?: boolean;
   handleClick?: MouseEventHandler;
 };
@@ -19,9 +20,11 @@ function LinkBtn({
   width,
   children,
   handleClick,
+  type,
 }: Props) {
   return btn ? (
     <button
+      type={type}
       onClick={handleClick}
       className={`${backgroundColor} ${color} ${width} py-3 px-7 text-[.9rem] uppercase duration-200 ${
         backgroundColor.includes("bg-transparent") ? "border" : null
