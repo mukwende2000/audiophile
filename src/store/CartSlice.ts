@@ -42,24 +42,25 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    toggle: (state) => {
+    toggleCart: (state) => {
       if (state.isOpen) {
         state.isOpen = false;
       } else {
         state.isOpen = true;
       }
     },
-    add: (state, action): void => {
+    addToCart: (state, action): void => {
       const isInCart = state.cartList.some(
         (item: CartItem) => item.product.id === action.payload.product.id
       );
       if (isInCart) {
         state.cartList;
+        toast.error("Item is already in cart", { position: "top-center" });
       } else {
         state.cartList.push(action.payload);
         localStorage.setItem("cartList", JSON.stringify(state.cartList));
         toast.success(`${action.payload.product.name} added to cart`, {
-          position: "top-left",
+          position: "top-center",
         });
         if (state.buttonState === "off") {
           state.buttonState = "on";
@@ -89,7 +90,7 @@ export const cartSlice = createSlice({
           if (item.quantity === 1) {
             state.cartList.splice(state.cartList.indexOf(item), 1);
             toast.info(`${action.payload.name} removed from the cart`, {
-              position: "top-left",
+              position: "top-center",
             });
           } else {
             item.quantity -= 1;
@@ -103,12 +104,12 @@ export const cartSlice = createSlice({
         return totalVal + item.totalPrice;
       }, 0);
     },
-    clear: (state) => {
+    clearCart: (state) => {
       state.cartList.length = 0;
       state.isOpen = false;
       state.buttonState = "off";
       toast.success("Successfully cleared, your cart is empty", {
-        position: "top-left",
+        position: "top-center",
       });
       localStorage.setItem("cartList", JSON.stringify(state.cartList));
     },
@@ -116,9 +117,9 @@ export const cartSlice = createSlice({
 });
 
 export const {
-  toggle,
-  clear,
-  add,
+  toggleCart,
+  clearCart,
+  addToCart,
   increaseItemQuantity,
   decreaseItemQuantity,
   calculateTotal,

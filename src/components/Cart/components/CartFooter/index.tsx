@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../../../store/store";
-import { toggle } from "../../../../store/CartSlice";
+import { toggleCart } from "../../../../store/CartSlice";
 
 function index() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -16,7 +16,7 @@ function index() {
       </div>
       <button
         onClick={() => {
-          dispatch(toggle());
+          dispatch(toggleCart());
           navigate("checkout");
         }}
         disabled={cart.buttonState === "off"}

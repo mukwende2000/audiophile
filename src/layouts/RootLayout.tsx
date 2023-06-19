@@ -5,7 +5,7 @@ import About from "../components/About";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import Backdrop from "../components/Backdrop/Backdrop";
-import { toggle } from "../store/CartSlice";
+import { toggleCart } from "../store/CartSlice";
 import { useEffect } from "react";
 
 function RootLayout() {
@@ -20,7 +20,9 @@ function RootLayout() {
   return (
     <div>
       <Header />
-      {cart.isOpen && <Backdrop onBackdropClick={() => dispatch(toggle())} />}
+      {cart.isOpen && (
+        <Backdrop onBackdropClick={() => dispatch(toggleCart())} />
+      )}
       <main>
         <Outlet />
       </main>

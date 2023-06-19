@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { formatPrice } from "../../utils/formatPrice";
 import LinkBtn from "../LinkBtn";
-import { CartItem, clear } from "../../store/CartSlice";
+import { CartItem, clearCart } from "../../store/CartSlice";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { AnyAction } from "@reduxjs/toolkit";
 import { setIsSubmitted } from "../../store/FormSlice";
@@ -86,7 +86,7 @@ function Dialog() {
         width="w-full"
         btn
         handleClick={() => {
-          dispatch(clear());
+          dispatch(clearCart());
           dispatch(setIsSubmitted(false));
           navigate("/");
         }}

@@ -4,7 +4,7 @@ import LinkBtn from "../LinkBtn";
 import data from "../../data/data.json";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
-import { add, calculateTotal } from "../../store/CartSlice";
+import { addToCart, calculateTotal } from "../../store/CartSlice";
 import { toast } from "react-toastify";
 
 type Props = {
@@ -72,14 +72,6 @@ function index({
             <p className="my-5 font-bold text-xl">{`$ ${price}`}</p>
           )}
           <div>
-            {pathname.includes("%") && (
-              <div className="bg-gray/30 mr-3 inline-flex">
-                <button className="py-2 px-4 hover:text-primary">+</button>
-                <span className="p-2">1</span>
-                <button className="py-2 px-4 hover:text-primary">-</button>
-              </div>
-            )}
-
             <LinkBtn
               btn={pathname.includes("%")}
               backgroundColor="bg-primary"
@@ -87,7 +79,7 @@ function index({
               path={`${pathname}/${name}`}
               handleClick={() => {
                 dispatch(
-                  add({
+                  addToCart({
                     product: getProduct(productId),
                     quantity: 1,
                     totalPrice: getProduct(productId)?.price,

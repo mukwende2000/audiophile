@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clear, calculateTotal } from "../../../store/CartSlice";
+import { clearCart, calculateTotal } from "../../../store/CartSlice";
 import { RootState } from "../../../store/store";
 
 function CartHeader() {
@@ -7,7 +7,7 @@ function CartHeader() {
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(clear());
+    dispatch(clearCart());
     dispatch(calculateTotal());
   }
   return (
