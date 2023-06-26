@@ -2,7 +2,7 @@ import RelatedProducts from "./components/RelatedProducts";
 import ProductGallery from "./components/ProductGallery";
 import ProductFeatures from "./components/ProductFeatures";
 import ProductDetails from "../../components/ProductDetails";
-import { LoaderFunction, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import data from "../../data/data.json";
 import { Product } from "../../utils/ProductType";
 import Container from "../../components/Container";
@@ -21,7 +21,7 @@ function index() {
         url={product.categoryImage.mobile}
         tabletUrl={product.categoryImage.tablet}
         desktopUrl={product.categoryImage.desktop}
-        alt=""
+        alt={product.name}
       />
       <ProductFeatures
         accessories={product.includes}
@@ -37,6 +37,7 @@ function index() {
         productImgDesktop={product.gallery.first.desktop}
         productImg3Tablet={product.gallery.second.desktop}
         productImg3Desktop={product.gallery.third.desktop}
+        alt={`${product.name} gallery image`}
       />
       <RelatedProducts others={product.others} />
     </Container>

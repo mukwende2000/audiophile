@@ -1,8 +1,8 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch, RootState } from "../../../../store/store";
 import { toggleCart } from "../../../../store/CartSlice";
+import { formatPrice } from "../../../../utils/formatPrice";
 
 function index() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -12,7 +12,9 @@ function index() {
     <>
       <div className="flex justify-between">
         <p className="uppercase text-gray">total</p>
-        <p className="text-dark font-bold text-lg">$ {cart.total}</p>
+        <p className="text-dark font-bold text-lg">
+          ${formatPrice(cart.total)}
+        </p>
       </div>
       <button
         onClick={() => {

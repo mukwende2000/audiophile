@@ -19,6 +19,7 @@ function Summary() {
         {cartList.map((item: CartItem) => {
           return (
             <OrderedItem
+              alt={item.product.name}
               key={item.product.id}
               url={item.product.cartImage}
               shortName={item.product.short}

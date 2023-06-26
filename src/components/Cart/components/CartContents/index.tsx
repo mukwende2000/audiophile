@@ -5,10 +5,8 @@ import {
   decreaseItemQuantity,
   increaseItemQuantity,
   calculateTotal,
-  UpdateCartItemPayload,
-  AddCartItemPayload,
 } from "../../../../store/CartSlice";
-import { Product } from "../../../../utils/ProductType";
+import { formatPrice } from "../../../../utils/formatPrice";
 
 function index() {
   const cartList = useSelector((state: RootState) => state.cart.cartList);
@@ -37,11 +35,15 @@ function index() {
             className="flex items-center justify-between  my-3"
           >
             <div className="w-16 overflow-hidden rounded-lg">
-              <img className="w-full" src={item.product.cartImage} alt="" />
+              <img
+                className="w-full"
+                src={item.product.cartImage}
+                alt={item.product.name}
+              />
             </div>
             <div className="mr-5 text-center">
               <p className="text-dark">{item.product.short}</p>
-              <p className="text-dark">{item.product.price}</p>
+              <p className="text-dark">${formatPrice(item.product.price)}</p>
             </div>
             <div className="flex justify-center items-center rounded-md bg-gray">
               <button

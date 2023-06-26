@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { addToCart, calculateTotal } from "../../store/CartSlice";
 import { toast } from "react-toastify";
+import { formatPrice } from "../../utils/formatPrice";
 
 type Props = {
   isNew?: boolean;
@@ -69,7 +70,7 @@ function index({
           </h1>
           <p className="my-5 text-gray">{description}</p>
           {pathname.includes("%") && (
-            <p className="my-5 font-bold text-xl">{`$ ${price}`}</p>
+            <p className="my-5 font-bold text-xl">${formatPrice(price)}</p>
           )}
           <div>
             <LinkBtn

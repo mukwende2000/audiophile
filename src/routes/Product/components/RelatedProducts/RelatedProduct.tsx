@@ -9,6 +9,7 @@ type Props = {
   desktopUrl: string;
   productName: string;
   slug: string;
+  alt: string;
 };
 
 function RelatedProduct({
@@ -16,6 +17,7 @@ function RelatedProduct({
   url,
   tabletUrl,
   desktopUrl,
+  alt,
   slug,
 }: Props) {
   const navigate = useNavigate();
@@ -28,7 +30,12 @@ function RelatedProduct({
 
   return (
     <div className="my-5 basis-full">
-      <Picture url={url} tabletUrl={tabletUrl} alt="" desktopUrl={desktopUrl} />
+      <Picture
+        url={url}
+        tabletUrl={tabletUrl}
+        alt={alt}
+        desktopUrl={desktopUrl}
+      />
       <h3 className="uppercase my-5 font-bold text-xl">{productName}</h3>
 
       <LinkBtn

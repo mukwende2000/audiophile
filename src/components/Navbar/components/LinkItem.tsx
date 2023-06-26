@@ -1,6 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import useMediaQuery from "../../../hooks/useMediaQuery";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../store/store";
 import { closeMenu } from "../../../store/MenuSlice";
 
@@ -14,16 +13,15 @@ type Props = {
 
 function LinkItem({ name, path, url, alt, mobile }: Props) {
   const dispatch = useDispatch<AppDispatch>();
-  const md = useMediaQuery("(min-width: 768px)");
   return (
     <li
       className={`list-none basis-full group ${
-        !mobile ? "my-4 md:my-0 " : null
+        !mobile ? "my-4 md:my-0 " : "md:my-20"
       }`}
     >
       {mobile ? (
         <Link
-          className="m-auto text-center rounded-xl grid text-dark place-content-center lg:w-[90%] bg-gray/10 my-32 pb-5"
+          className="m-auto text-center rounded-xl grid text-dark place-content-center lg:w-[90%] bg-gray/90 md:my-0 my-20 pb-5"
           onClick={() => dispatch(closeMenu())}
           to={path}
         >

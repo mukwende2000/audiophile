@@ -39,10 +39,11 @@ function Dialog() {
         You will recieve an email confiramtion shortly.
       </p>
       <div className="my-5 md:flex rounded-lg overflow-hidden">
-        <div className="bg-gray/20 p-7">
+        <div className="basis-full bg-gray/20 p-7">
           {!viewingAll ? (
             <div>
               <OrderedItem
+                alt={firstItem.product.name}
                 url={firstItem.product.cartImage}
                 shortName={firstItem.product.short}
                 quantity={firstItem.quantity}
@@ -53,6 +54,7 @@ function Dialog() {
             cartList.map((item) => {
               return (
                 <OrderedItem
+                  alt={item.product.name}
                   key={item.product.id}
                   url={item.product.cartImage}
                   shortName={item.product.short}
@@ -77,7 +79,7 @@ function Dialog() {
             </button>
           )}
         </div>
-        <div className="text-center px-10 ml-1 bg-dark text-secondary grid place-content-center">
+        <div className="text-center px-10 basis-[50%] bg-dark text-secondary grid place-content-center">
           <p className=" uppercase text-gray">grand total</p>
           <p className="font-bold md:text-2xl ">$ {formatPrice(total + 50)}</p>
         </div>
