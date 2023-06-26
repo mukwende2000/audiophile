@@ -34,7 +34,9 @@ const initialState: CartState = {
   isOpen: false,
   buttonState: cartList.length > 0 ? "on" : "off",
   cartList,
-  total: cartList.length,
+  total: cartList.reduce((totalVal: number, item: CartItem) => {
+    return totalVal + item.totalPrice;
+  }, 0),
   checkedout: false,
 };
 
