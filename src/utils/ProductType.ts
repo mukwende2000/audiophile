@@ -37,4 +37,5 @@ export interface Product {
   includes: Accessories[];
   gallery: Gallery;
   others: Other[];
+  payload: any
 }

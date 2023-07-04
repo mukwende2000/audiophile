@@ -12,7 +12,7 @@ function index() {
     <>
       <FeaturedProduct />
       <nav>
-        <Container styles="md:flex gap-10 justify-center">
+        <Container styles="md:flex">
           <LinkItem mobile path="headphones" url={headphones} />
           <LinkItem mobile path="speakers" url={speaker} />
           <LinkItem mobile path="earphones" url={earphone} />

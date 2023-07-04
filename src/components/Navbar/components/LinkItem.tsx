@@ -25,10 +25,10 @@ function LinkItem({ name, path, url, alt, mobile }: Props) {
           onClick={() => dispatch(closeMenu())}
           to={path}
         >
-          <img className="w-48 -mt-16" src={url} alt={alt} />
-          <p className="uppercase -mt-5 font-bold">{path}</p>
+          <img className="w-48 aspect-square -mt-16" src={url} alt={alt} />
+          <p className="uppercase -mt-5 text-white font-bold">{path}</p>
           <p className="flex items-center justify-center">
-            <span className="uppercase">shop</span>
+            <span className="uppercase text-white">shop</span>
             <span
               role="presentation"
               className="text-primary text-2xl ml-2 inline-block rotate-90 group-hover:translate-x-1 duration-200"
