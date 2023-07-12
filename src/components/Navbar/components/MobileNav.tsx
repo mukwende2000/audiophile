@@ -10,9 +10,9 @@ function MobileNav() {
   const isActive = useSelector((state: RootState) => state.menu.isActive);
   return (
     <ul
-      className={`bg-black overflow-hidden top-16 py-15 absolute ${
+      className={`bg-primary overflow-hidden top-16 py-15 absolute ${
         isActive ? "h-[calc(100vh+240px)]" : "h-0"
-      } right-1 left-1 bg-secondary duration-500`}
+      } right-1 left-1 duration-500`}
     >
       <Container>
         <LinkItem

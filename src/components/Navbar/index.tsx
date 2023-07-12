@@ -19,7 +19,10 @@ function index() {
   }, [isAbove768Px]);
 
   return (
-    <nav className={`md:static absolute left-0 right-0 top-12`}>
+    <nav
+      className={`md:static absolute left-0 right-0 top-12
+      `}
+    >
       {isAbove768Px ? <MainNav /> : <MobileNav />}
     </nav>
   );
