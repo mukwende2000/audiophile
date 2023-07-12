@@ -41,35 +41,16 @@ This is a solution to the [Audiophile Ecormmece Challenge]([https://www.frontend
 ### What I learned
 
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-A friend of mine said the mobile menu, 
+A friend of mine said the mobile menu wasn't intuitive, so i plan redoing it and making it a simple design and that is for users to navigate.
 
 ## Author
 
-- Website - [Add your name here](https://mukwende.vercel.app)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/mukwende2000)
-- Twitter - [@yourusername](https://www.twitter.com/mukwende16)
+- Website - [Mukwende](https://mukwende.vercel.app)
+- Frontend Mentor - [@mukwende2000](https://www.frontendmentor.io/profile/mukwende2000)
+- Twitter - [@mukwende16](https://www.twitter.com/mukwende16)
 
 ## Acknowledgments
 
