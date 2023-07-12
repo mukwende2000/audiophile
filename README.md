@@ -1,6 +1,6 @@
 ## Audiophile Ecormmece
 
-This is a solution to the [Audiophile Ecormmece]([https://www.frontendmentor.io/challenges/](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx)). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Audiophile Ecormmece Challenge]([https://www.frontendmentor.io/challenges/](https://www.frontendmentor.io/challenges/audiophile-ecommerce-website-C8cuSd_wx)). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ## Table of contents
 
@@ -36,8 +36,8 @@ Users should be able to:
 
 ### Links
 
-- Live site URL: [Add solution URL here](https://audphil.vercel.app)
-- Solution URL: [Add live site URL here](https://github.com/mukwende2000/audiophile)
+- [Live site URL](https://audphil.vercel.app)
+- [Solution URL](https://github.com/mukwende2000/audiophile)
 
 ## My process
 
